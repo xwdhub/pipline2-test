@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+  stages {
+    stage('1') {
+      steps {
+        def shell(command) {
+    return bat(returnStdout: true, script: "sh -x -c \ if  exist "E:\\jenkins-test"; md -s -q E:\\jenkins-test\\test1\\test1',\"").trim()
+}
+      }
+    }
+    stage('2') {
+      steps {
+        bat(script: '   if  exist "E:\\jenkins-test"; rd  -s -q E:\\jenkins-test\\test1\\test1', label: 'md directory', returnStatus: true, returnStdout: true)
+      }
+    }
+    
+
+  }
+}
